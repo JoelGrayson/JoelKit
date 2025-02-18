@@ -1,1 +1,8 @@
+# Executable
 **/a.out
+date/main
+
+# Doxygen
+date/html
+date/latex
+
