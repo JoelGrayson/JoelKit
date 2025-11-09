@@ -1,8 +1,8 @@
 # Executable
 **/a.out
-date/main
+data-structures/date/main
 
 # Doxygen
-date/html
-date/latex
+data-structures/date/html
+data-structures/date/latex
 
