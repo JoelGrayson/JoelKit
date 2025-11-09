@@ -1,0 +1,15 @@
+#include "visualizeGraph.h"
+#include <iostream>
+
+template <typename T>
+void visualizeGraph(Graph<T> G) {
+    std::cout << "---Graph Visualization---" << std::endl;
+    std::cout << "Vertices:" << std::endl;
+    auto vHead = G.V;
+    while (vHead != nullptr) {
+        std::cout << vHead->value.value << std::endl;
+        vHead = vHead->next;
+    }
+    std::cout << "Edges:" << std::endl;
+}
+
