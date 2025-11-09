@@ -1,14 +1,13 @@
 #include "date.h"
 
 bool Date::isLeapYear(int year) const {
-    bool out=false;
-    if (year%4==0) //2024 is leap year
-        out=true;
-    if (year%100==0) //1900 is not leap year
-        out=false;
     if (year%400==0) //2000 is leap year
-        out=true;
-    return out;
+        return true;
+    if (year%100==0) //1900 is not leap year
+        return false;
+    if (year%4==0) //2024 is leap year
+        return true;
+    return false; //2023 is not a leap year
 }
 
 int Date::daysInMonth(int month, bool leapYear) const {
