@@ -1,22 +1,26 @@
 #include "linked-list.h"
 #include <iostream>
 
-Node::Node(int value, Node* next) {
+template <typename T>
+Node<T>::Node(T value, Node<T>* next) {
     this->value = value;
     this->next = next;
 }
 
-Node::Node(int value) {
+template <typename T>
+Node<T>::Node(T value) {
     this->value = value;
     this->next = nullptr;
 }
 
-LinkedList::LinkedList() {
+template <typename T>
+LinkedList<T>::LinkedList() {
     head = nullptr;
 }
 
-size_t LinkedList::size() {
-    Node* n = this->head;
+template <typename T>
+size_t LinkedList<T>::size() {
+    Node<T>* n = this->head;
     size_t out = 0;
     while (n != nullptr) {
         out++;
@@ -25,19 +29,22 @@ size_t LinkedList::size() {
     return out;
 }
 
-void LinkedList::add_value_to_front(int value) {
-    Node* new_node = new Node(value); //heap allocation
+template <typename T>
+void LinkedList<T>::add_value_to_front(T value) {
+    Node<T>* new_node = new Node(value); //heap allocation
     add_node_to_front(new_node);
 }
 
-void LinkedList::add_node_to_front(Node* n) {
+template <typename T>
+void LinkedList<T>::add_node_to_front(Node<T>* n) {
     n->next = head;
     head = n;
 }
 
-Node* LinkedList::get_tail() {
-    Node* n = head;
-    Node* pN = n; //previous n
+template <typename T>
+Node<T>* LinkedList<T>::get_tail() {
+    Node<T>* n = head;
+    Node<T>* pN = n; //previous n
     while (n != nullptr) {
         pN = n;
         n = n->next;
@@ -45,13 +52,15 @@ Node* LinkedList::get_tail() {
     return pN;
 }
 
-void LinkedList::add_value_to_back(int value) {
-    Node* new_node = new Node(value);
+template <typename T>
+void LinkedList<T>::add_value_to_back(T value) {
+    Node<T>* new_node = new Node(value);
     add_node_to_back(new_node);
 }
 
-void LinkedList::add_node_to_back(Node* n) {
-    Node* tail = get_tail();
+template <typename T>
+void LinkedList<T>::add_node_to_back(Node<T>* n) {
+    Node<T>* tail = get_tail();
     if (tail == nullptr) {
         add_node_to_front(n);
     } else {
@@ -59,12 +68,14 @@ void LinkedList::add_node_to_back(Node* n) {
     }
 }
 
-void LinkedList::print() {
-    Node* n = head;
+template <typename T>
+std::ostream& operator<<(std::ostream& os, const LinkedList<T>& ll) {
+    Node<T>* n = ll.head;
     while (n != nullptr) {
-        std::cout << n->value << " ";
+        os << n->value << " ";
         n = n->next;
     }
-    std::cout << std::endl;
+    os << std::endl;
+    return os;
 }
 
