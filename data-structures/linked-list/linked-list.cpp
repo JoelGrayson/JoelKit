@@ -1,5 +1,4 @@
 #include <iostream>
-// #include <cstddef>
 
 class Node {
 public:
@@ -78,17 +77,3 @@ public:
         std::cout << std::endl;
     }
 };
-
-int main() {
-    LinkedList l;
-    l.add_value_to_front(1);
-    l.add_value_to_front(2);
-    l.add_value_to_front(3);
-    l.add_value_to_back(9);
-    l.print();
-    std::cout << l.size() << std::endl;
-    std::cout << "Head: " << l.head->value << std::endl;
-    std::cout << "Tail: " << l.get_tail()->value << std::endl;
-    return 0;
-}
-

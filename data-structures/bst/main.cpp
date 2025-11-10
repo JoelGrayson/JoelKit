@@ -11,7 +11,7 @@ void printTree(Node* n) {
         return;
     }
     printTree(n->left);
-    std::cout << n->value;
+    std::cout << " " << n->value << " ";
     printTree(n->right);
 }
 
