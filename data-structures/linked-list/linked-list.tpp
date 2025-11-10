@@ -14,12 +14,47 @@ Node<T>::Node(T value) {
 }
 
 template <typename T>
-LinkedList<T>::LinkedList() {
-    head = nullptr;
+LinkedList<T>::LinkedList() {}
+
+template <typename T>
+void LinkedList<T>::insert(T value) {
+    Node<T>* new_head = new Node(value);
+    new_head->next = head;
+    head = new_head;
+    if (tail == nullptr)
+        tail = new_head;
 }
 
 template <typename T>
-size_t LinkedList<T>::size() {
+void LinkedList<T>::insert_back(T value) {
+    Node<T>* new_tail = new Node(value);
+    tail->next = new_tail; //old tail now points to new tail
+    tail = new_tail;
+}
+
+template <typename T>
+void LinkedList<T>::insert_at(size_t index, T value) {
+    Node<T>* n = new Node(value);
+    
+    Node<T>* before = head; //node right before where the new node will be
+    for (int i = 0; i < index - 1; i++) {
+        before = before->next;
+    }
+    n->next = before->next;
+    before->next = n;
+}
+
+template <typename T>
+Node<T>* LinkedList<T>::operator[](size_t index) {
+    Node<T>* n = head;
+    for (int i = 0; i < index; i++) {
+        n = n->next;
+    }
+    return n;
+}
+
+template <typename T>
+size_t LinkedList<T>::size() const {
     Node<T>* n = this->head;
     size_t out = 0;
     while (n != nullptr) {
@@ -30,47 +65,8 @@ size_t LinkedList<T>::size() {
 }
 
 template <typename T>
-void LinkedList<T>::add(T value) {
-    Node<T>* new_node = new Node(value); //heap allocation
-    add_node(new_node);
-}
-
-template <typename T>
-void LinkedList<T>::add_node(Node<T>* n) {
-    n->next = head;
-    head = n;
-}
-
-template <typename T>
-Node<T>* LinkedList<T>::get_tail() {
-    Node<T>* n = head;
-    Node<T>* pN = n; //previous n
-    while (n != nullptr) {
-        pN = n;
-        n = n->next;
-    }
-    return pN;
-}
-
-template <typename T>
-void LinkedList<T>::add_to_end(T value) {
-    Node<T>* new_node = new Node(value);
-    add_node_to_end(new_node);
-}
-
-template <typename T>
-void LinkedList<T>::add_node_to_end(Node<T>* n) {
-    Node<T>* tail = get_tail();
-    if (tail == nullptr) {
-        add_node(n);
-    } else {
-        tail->next = n;
-    }
-}
-
-template <typename T>
-std::ostream& operator<<(std::ostream& os, const LinkedList<T>& ll) {
-    Node<T>* n = ll.head;
+std::ostream& operator<<(std::ostream& os, const LinkedList<T>& l) {
+    Node<T>* n = l.head;
     while (n != nullptr) {
         os << n->value << " ";
         n = n->next;
