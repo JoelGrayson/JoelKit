@@ -3,10 +3,10 @@
 
 int main() {
     LinkedList<int> l;
-    l.add_value_to_front(1);
-    l.add_value_to_front(2);
-    l.add_value_to_front(3);
-    l.add_value_to_back(9);
+    l.add(1);
+    l.add(2);
+    l.add(3);
+    l.add_to_end(9);
 
     std::cout << l << std::endl;
     std::cout << l.size() << std::endl;

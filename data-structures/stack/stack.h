@@ -8,7 +8,7 @@ class Stack {
 private:
     T* elems_;
     size_t size_ = 0;
-    size_t capacity_ = 50;
+    size_t capacity_ = 100;
 
     /**
      * when capacity is exceeded, double capacity

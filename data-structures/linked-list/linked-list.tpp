@@ -30,13 +30,13 @@ size_t LinkedList<T>::size() {
 }
 
 template <typename T>
-void LinkedList<T>::add_value_to_front(T value) {
+void LinkedList<T>::add(T value) {
     Node<T>* new_node = new Node(value); //heap allocation
-    add_node_to_front(new_node);
+    add_node(new_node);
 }
 
 template <typename T>
-void LinkedList<T>::add_node_to_front(Node<T>* n) {
+void LinkedList<T>::add_node(Node<T>* n) {
     n->next = head;
     head = n;
 }
@@ -53,16 +53,16 @@ Node<T>* LinkedList<T>::get_tail() {
 }
 
 template <typename T>
-void LinkedList<T>::add_value_to_back(T value) {
+void LinkedList<T>::add_to_end(T value) {
     Node<T>* new_node = new Node(value);
-    add_node_to_back(new_node);
+    add_node_to_end(new_node);
 }
 
 template <typename T>
-void LinkedList<T>::add_node_to_back(Node<T>* n) {
+void LinkedList<T>::add_node_to_end(Node<T>* n) {
     Node<T>* tail = get_tail();
     if (tail == nullptr) {
-        add_node_to_front(n);
+        add_node(n);
     } else {
         tail->next = n;
     }
@@ -75,7 +75,6 @@ std::ostream& operator<<(std::ostream& os, const LinkedList<T>& ll) {
         os << n->value << " ";
         n = n->next;
     }
-    os << std::endl;
     return os;
 }
 

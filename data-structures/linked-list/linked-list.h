@@ -21,12 +21,24 @@ public:
 
     size_t size();
 
-    void add_value_to_front(T value);
-    void add_node_to_front(Node<T>* n);
+    void add(T value);
+    void add_node(Node<T>* n);
     
     Node<T>* get_tail();
-    void add_value_to_back(T value);
-    void add_node_to_back(Node<T>* n);
+    void add_to_end(T value);
+    void add_node_to_end(Node<T>* n);
+
+    T operator[](int index) {
+        n = head;
+        for (int i)
+        return 0;
+    }
+    void insert_at(int index, T value) {
+        
+    }
+
+    T& operator[](size_t index);
+    const T& operator[](size_t index) const;
 
     template <typename U>
     friend std::ostream& operator<<(std::ostream& os, const LinkedList<U>& ll);

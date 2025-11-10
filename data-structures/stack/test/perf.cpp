@@ -4,7 +4,7 @@
 int main() {
     Stack<int> s;
     
-    for (int i = 0; i < 110; i++) {
+    for (int i = 0; i < 1000; i++) {
         s.push(i);
     }
 
