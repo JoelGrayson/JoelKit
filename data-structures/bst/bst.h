@@ -1,5 +1,7 @@
 #pragma once
 #include <iostream>
+#include <utility> //std::tuple
+#include <optional>
 
 template <typename T>
 struct Node {
@@ -25,6 +27,12 @@ public:
 private:
     void print_node(Node<T>* n) const;
     bool contains_rec_helper(T el, Node<T>* current_node) const;
+    
+    /**
+     * This method is useful for remove
+     * @returns optional<(parent, child, is_left)>; pointer to parent node, pointer to child node, boolean for if it is the left child (true is left, false is right). if the item is not found, returns None
+     * */
+    std::optional<std::tuple<Node<T>*, Node<T>*, bool>> find_node_and_its_parent(T el);
 };
 
 #include "bst.tpp"
