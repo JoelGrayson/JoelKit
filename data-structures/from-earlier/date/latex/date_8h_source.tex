@@ -1,0 +1,68 @@
+\doxysection{date.\+h}
+\hypertarget{date_8h_source}{}\label{date_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ Date\_h}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ Date\_h}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <ctime>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <format>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{long}\ Seconds;}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ SECONDS\_IN\_DAY\ 60*60*24\ }\textcolor{comment}{//86'400}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ SECONDS\_IN\_HOUR\ 60*60}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#define\ SECONDS\_IN\_YEAR\ SECONDS\_IN\_DAY*365}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ SECONDS\_IN\_LEAP\_YEAR\ SECONDS\_IN\_DAY*366}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#define\ SECONDS\_IN\_MINUTE\ 60}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{comment}{//\ const\ int\ SECONDS\_IN\_YEAR=SECONDS\_IN\_DAY*365;}}
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ const\ int\ SECONDS\_IN\_LEAP\_YEAR=SECONDS\_IN\_DAY*366;}}
+\DoxyCodeLine{00018\ \textcolor{comment}{//\ const\ int\ SECONDS\_IN\_MINUTE=60;}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_date_a4e59ed4ba66eec61c27460c5d09fa1bd}{Date}}\ \{}
+\DoxyCodeLine{00025\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{class_date_a4e59ed4ba66eec61c27460c5d09fa1bd}{Date}}();}
+\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{class_date_a4e59ed4ba66eec61c27460c5d09fa1bd}{Date}}(\textcolor{keywordtype}{double}\ utcOffset);}
+\DoxyCodeLine{00030\ \ \ \ \ \mbox{\hyperlink{class_date_a4e59ed4ba66eec61c27460c5d09fa1bd}{Date}}(\textcolor{keywordtype}{int}\ year,\ \textcolor{keywordtype}{int}\ month,\ \textcolor{keywordtype}{int}\ day);}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_date_a1955602cdb92015b197dfda23daaa5ea}{now}}();}
+\DoxyCodeLine{00034\ \ \ \ \ }
+\DoxyCodeLine{00036\ \ \ \ \ Seconds\ \mbox{\hyperlink{class_date_a4da517594826b35206ddaa388e602165}{getUnixTime}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{void}\ setUnixTime(Seconds\ newUnixTime);}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{double}\ getUTCOffset()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{void}\ setUTCOffset(\textcolor{keywordtype}{double});}
+\DoxyCodeLine{00040\ \ \ \ \ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{int}\ getYear()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{int}\ getMonth()\ \textcolor{keyword}{const};\ \textcolor{comment}{//2\ for\ feb}}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{int}\ getDay()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ std::string\ toString()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00046\ \ \ \ \ std::string\ toString24HourFormat()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00047\ \ \ \ \ std::string\ toDateString()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00048\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00050\ \ \ \ \ Seconds\ unixTime;}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{double}\ utcOffset;}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{comment}{//\ Time\ fields}}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{int}\ year;}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{int}\ month;}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{int}\ day;}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{int}\ hour;}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{int}\ minute;}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{int}\ second;}
+\DoxyCodeLine{00061\ \ \ \ \ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{bool}\ isLeapYear(\textcolor{keywordtype}{int}\ year)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{int}\ daysInMonth(\textcolor{keywordtype}{int}\ month,\ \textcolor{keywordtype}{bool}\ leapYear)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{void}\ initializeAllVariables();}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{void}\ updateTimeFieldsWithUnixTime();}
+\DoxyCodeLine{00067\ \ \ \ \ std::string\ displayNum(\textcolor{keywordtype}{int}\ num)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00068\ \};}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ std::ostream\&\ operator<<(std::ostream\&,\ \mbox{\hyperlink{class_date}{Date}});}
+\DoxyCodeLine{00071\ \textcolor{keywordtype}{bool}\ operator==(\mbox{\hyperlink{class_date}{Date}},\ \mbox{\hyperlink{class_date}{Date}});}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ Date\_h}}
+
+\end{DoxyCode}

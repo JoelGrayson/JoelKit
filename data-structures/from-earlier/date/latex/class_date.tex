@@ -1,0 +1,92 @@
+\doxysection{Date Class Reference}
+\hypertarget{class_date}{}\label{class_date}\index{Date@{Date}}
+
+
+{\ttfamily \#include $<$date.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_date_a4e59ed4ba66eec61c27460c5d09fa1bd}{Date}} ()
+\item 
+\mbox{\hyperlink{class_date_a80838d399f981e062bbc827342d1c59f}{Date}} (double utc\+Offset)
+\item 
+\Hypertarget{class_date_a5874432b5f7339205866055201e885d7}\label{class_date_a5874432b5f7339205866055201e885d7} 
+{\bfseries Date} (int year, int month, int day)
+\item 
+Seconds \mbox{\hyperlink{class_date_a4da517594826b35206ddaa388e602165}{get\+Unix\+Time}} () const
+\item 
+\Hypertarget{class_date_a782b0299c5ca819f35a29d44510d0388}\label{class_date_a782b0299c5ca819f35a29d44510d0388} 
+void {\bfseries set\+Unix\+Time} (Seconds new\+Unix\+Time)
+\item 
+\Hypertarget{class_date_ae20d719ddf0126cb1e57949163ad380f}\label{class_date_ae20d719ddf0126cb1e57949163ad380f} 
+double {\bfseries get\+UTCOffset} () const
+\item 
+\Hypertarget{class_date_a44cb9bdc769b57b094d07a804ccb0a4c}\label{class_date_a44cb9bdc769b57b094d07a804ccb0a4c} 
+void {\bfseries set\+UTCOffset} (double)
+\item 
+\Hypertarget{class_date_a8b0869f34c2b38d108ab83ee2e770e5d}\label{class_date_a8b0869f34c2b38d108ab83ee2e770e5d} 
+int {\bfseries get\+Year} () const
+\item 
+\Hypertarget{class_date_a332f6e3a2f6a40d73742b6dab7be0f64}\label{class_date_a332f6e3a2f6a40d73742b6dab7be0f64} 
+int {\bfseries get\+Month} () const
+\item 
+\Hypertarget{class_date_a0f253815240e70f4c39cb93cc68bd3f4}\label{class_date_a0f253815240e70f4c39cb93cc68bd3f4} 
+int {\bfseries get\+Day} () const
+\item 
+\Hypertarget{class_date_aceba42d25cb6a888cea3428f80d50359}\label{class_date_aceba42d25cb6a888cea3428f80d50359} 
+std\+::string {\bfseries to\+String} () const
+\item 
+\Hypertarget{class_date_a84dd54c899dedf54e81df27e7120d8b8}\label{class_date_a84dd54c899dedf54e81df27e7120d8b8} 
+std\+::string {\bfseries to\+String24\+Hour\+Format} () const
+\item 
+\Hypertarget{class_date_a378c4553bf82161c8c59285d103fdc2c}\label{class_date_a378c4553bf82161c8c59285d103fdc2c} 
+std\+::string {\bfseries to\+Date\+String} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static int \mbox{\hyperlink{class_date_a1955602cdb92015b197dfda23daaa5ea}{now}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Lets you interpret time in years, months, days, hours, minutes, and seconds Limitations\+: ignores leap seconds as most unix time does. This means it differs from UTC time slightly by under 1 minute. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_date_a4e59ed4ba66eec61c27460c5d09fa1bd}\index{Date@{Date}!Date@{Date}}
+\index{Date@{Date}!Date@{Date}}
+\doxysubsubsection{\texorpdfstring{Date()}{Date()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_date_a4e59ed4ba66eec61c27460c5d09fa1bd} 
+Date\+::\+Date (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+default constructor which initializes to now \Hypertarget{class_date_a80838d399f981e062bbc827342d1c59f}\index{Date@{Date}!Date@{Date}}
+\index{Date@{Date}!Date@{Date}}
+\doxysubsubsection{\texorpdfstring{Date()}{Date()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_date_a80838d399f981e062bbc827342d1c59f} 
+Date\+::\+Date (\begin{DoxyParamCaption}\item[{double}]{utc\+Offset}{}\end{DoxyParamCaption})}
+
+initialize to now with a utc offset 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_date_a4da517594826b35206ddaa388e602165}\index{Date@{Date}!getUnixTime@{getUnixTime}}
+\index{getUnixTime@{getUnixTime}!Date@{Date}}
+\doxysubsubsection{\texorpdfstring{getUnixTime()}{getUnixTime()}}
+{\footnotesize\ttfamily \label{class_date_a4da517594826b35206ddaa388e602165} 
+Seconds Date\+::get\+Unix\+Time (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+unix time 
+\end{DoxyReturn}
+\Hypertarget{class_date_a1955602cdb92015b197dfda23daaa5ea}\index{Date@{Date}!now@{now}}
+\index{now@{now}!Date@{Date}}
+\doxysubsubsection{\texorpdfstring{now()}{now()}}
+{\footnotesize\ttfamily \label{class_date_a1955602cdb92015b197dfda23daaa5ea} 
+int Date\+::now (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\doxylink{class_date_a1955602cdb92015b197dfda23daaa5ea}{Date\+::now()} gets unix time for now 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+date.\+h\item 
+date.\+cpp\end{DoxyCompactItemize}
