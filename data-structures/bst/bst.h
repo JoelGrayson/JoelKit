@@ -1,4 +1,5 @@
 #pragma once
+
 #include <iostream>
 #include <utility> //std::tuple
 #include <optional>
@@ -8,6 +9,8 @@ struct Node {
     T value;
     Node<T>* left = nullptr;
     Node<T>* right = nullptr;
+
+    Node(T value): value(value) {}
 };
 
 template <typename T>
@@ -19,7 +22,7 @@ public:
     bool insert(T el);
     bool contains(T el) const;
     bool contains_rec(T el) const;
-    /** returns if an element was removed */
+    /** @returns if an element was removed */
     bool remove(T el);
 
     template <typename U>

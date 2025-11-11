@@ -1,6 +1,8 @@
+#include <optional>
+
 template <typename T>
 bool BST<T>::insert(T el) {
-    Node<T>* new_node = new Node(el);
+    Node<T>* new_node = new Node<T>(el);
 
     if (root == nullptr) {
         root = new_node;
@@ -69,7 +71,7 @@ std::optional<ParentChildRel<T>> BST<T>::find_node_and_its_parent(T el) {
 
     while (child != nullptr) {
         if (el == child->value) {
-            return std::make_tuple<ParentChildRel<T>>(parent, child, is_left);
+            return std::make_tuple(parent, child, is_left);
         } else if (el > child->value) { //go right
             parent = child;
             child = child->right;
@@ -96,7 +98,7 @@ bool BST<T>::remove(T el) {
     Node<T>* child = std::get<1>(unwrapped_res); //node to delete
     bool is_left = std::get<2>(unwrapped_res);
     
-    // Case 2: deleting a leaf
+    // Case 1: deleting a leaf
     if (child->left == nullptr && child->right == nullptr) {
         if (parent == nullptr) { //child is root node
             // In this case, deleting root node with nothing else in tree (root is leaf)
@@ -114,7 +116,8 @@ bool BST<T>::remove(T el) {
     }
 
     // Case 2: deleting root (that has children by not being a leaf)
-    if (parent == nullptr) { //root
+    // Since it is the root, we have to update the root pointer (parent is nullptr)
+    if (parent == nullptr) { //child is root
         if (child->right != nullptr) {
             Node<T>* replacement = child->right;
             Node<T>* parent_of_replacement = child;
@@ -123,9 +126,15 @@ bool BST<T>::remove(T el) {
                 replacement = replacement->left;
             }
 
-            child->value = replacement->value; //delete the old node and replace it with the new node's value
-            parent_of_replacement->left = replacement->right;
+            Node<T>* old_replacement_right = replacement->right;
+            replacement->left = child->left;
+            replacement->right = child->right;
+            root = replacement;
+            
+            delete child;
 
+            parent_of_replacement->left = old_replacement_right;
+            
             return true;
         }
 
@@ -136,10 +145,67 @@ bool BST<T>::remove(T el) {
             parent_of_replacement = replacement;
             replacement = replacement->right;
         }
+        
+        Node<T>* old_replacement_left = replacement->left;
+        replacement->left = child->left;
+        root = replacement;
+        // we already know replacement->right is null so it is fine
 
-        child->value = replacement->value;
-        parent_of_replacement->right = replacement->left;
+        delete child;
+
+        parent_of_replacement->right = old_replacement_left;
+
+        return true;
     }
+
+    // Case 3: deleting a non-root interior node
+    // Since it is an interior node, it has to have a child
+    // Case 3a: deleted node has a right child
+    if (child->right != nullptr) {
+        Node<T>* replacement = child->right;
+        Node<T>* parent_of_replacement = child;
+        while (replacement->left != nullptr) {
+            parent_of_replacement = replacement;
+            replacement = replacement->left;
+        }
+
+        Node<T>* old_replacement_right = replacement->right;
+        replacement->left = child->left;
+        if (child->right != replacement) {
+            replacement->right = child->right;
+        }
+
+        if (is_left)
+            parent->left = replacement;
+        else
+            parent->right = replacement;
+
+        delete child;
+        return true;
+    }
+
+    // Case 3b: deleted node only has a left child
+    // implicitly, we know that child->left != nullptr since it is not a leaf and does not have a right node
+    Node<T>* replacement = child->left;
+    Node<T>* parent_of_replacement = child;
+
+    while (replacement->right != nullptr) {
+        parent_of_replacement = replacement;
+        replacement = replacement->right;
+    }
+
+    Node<T>* old_replacement_left = replacement->left;
+    if (child->left != replacement) {
+        replacement->left = child->left;
+    }
+    if (is_left)
+        parent->left = replacement;
+    else
+        parent->right = replacement;
+    parent_of_replacement->right = old_replacement_left;
+
+    delete child;
+    return true;
 }
 
 template <typename T>

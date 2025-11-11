@@ -1,0 +1,5 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/joelgrayson/Desktop/Software/CS Theory/data-structures/bst/test/simple'
+relocations:     []
+...
