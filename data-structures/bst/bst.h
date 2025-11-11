@@ -28,7 +28,7 @@ public:
     template <typename U>
     friend std::ostream& operator<<(std::ostream& os, const BST<U>& bst);
 private:
-    void print_node(Node<T>* n) const;
+    void print_node(Node<T>* n, int level = 0) const;
     bool contains_rec_helper(T el, Node<T>* current_node) const;
     
     /**

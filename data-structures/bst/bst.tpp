@@ -208,26 +208,41 @@ bool BST<T>::remove(T el) {
     return true;
 }
 
+/** this printing method is nice because leave nodes are surrounded like so (3) */
 template <typename T>
 std::ostream& operator<<(std::ostream& os, const BST<T>& bst) {
-    bst.print_node(bst.root);
+    bst.print_node(bst.root, 0);
     return os;
 }
 
 template <typename T>
-void BST<T>::print_node(Node<T>* n) const {
+void BST<T>::print_node(Node<T>* n, int level) const {
     if (n == nullptr) return;
 
+    int paren_type = level % 4;
+    char open_paren = '(';
+    char close_paren = ')';
+    if (paren_type == 1) {
+        open_paren = '<';
+        close_paren = '>';
+    } else if (paren_type == 2) {
+        open_paren = '{';
+        close_paren = '}';
+    } else if (paren_type == 3) {
+        open_paren = '[';
+        close_paren = ']';
+    }
+    
     if (n->left != nullptr) {
-        std::cout << "(";
-        print_node(n->left);
-        std::cout << ") ← ";
+        std::cout << open_paren;
+        print_node(n->left, level + 1);
+        std::cout << close_paren << " ← ";
     }
     std::cout << n->value;
     if (n->right != nullptr) {
-        std::cout << " → (";
-        print_node(n->right);
-        std::cout << ")";
+        std::cout << " → " << open_paren;
+        print_node(n->right, level + 1);
+        std::cout << close_paren;
     }
 }
 
