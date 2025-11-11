@@ -2,8 +2,8 @@
 #include <iostream>
 
 int main() {
-    Node<int>* n = new Node(3);
-    Node<int>* n2 = n;
+    BSTNode<int>* n = new BSTNode(3);
+    BSTNode<int>* n2 = n;
 
     std::cout << n->value << std::endl;
     return 0;

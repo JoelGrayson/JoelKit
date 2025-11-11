@@ -2,14 +2,14 @@
 
 template <typename T>
 bool BST<T>::insert(T el) {
-    Node<T>* new_node = new Node<T>(el);
+    BSTNode<T>* new_node = new BSTNode<T>(el);
 
     if (root == nullptr) {
         root = new_node;
         return true;
     }
 
-    Node<T>* parent = root; //parent of the new node
+    BSTNode<T>* parent = root; //parent of the new node
     while (true) {
         if (el > parent->value) {
             if (parent->right == nullptr) {
@@ -31,7 +31,7 @@ bool BST<T>::insert(T el) {
 
 template <typename T>
 bool BST<T>::contains(T el) const { //iterative approach
-    Node<T>* current_node = root;
+    BSTNode<T>* current_node = root;
     while (current_node != nullptr) {
         if (el == current_node->value)
             return true;
@@ -49,7 +49,7 @@ bool BST<T>::contains_rec(T el) const { //recursive implementation
 }
 
 template <typename T>
-bool BST<T>::contains_rec_helper(T el, Node<T>* current_node) const {
+bool BST<T>::contains_rec_helper(T el, BSTNode<T>* current_node) const {
     if (current_node == nullptr)
         return false;
     if (current_node->value == el)
@@ -61,12 +61,12 @@ bool BST<T>::contains_rec_helper(T el, Node<T>* current_node) const {
 }
 
 template <typename T>
-using ParentChildRel = std::tuple<Node<T>*, Node<T>*, bool>;
+using ParentChildRel = std::tuple<BSTNode<T>*, BSTNode<T>*, bool>;
 
 template <typename T>
 std::optional<ParentChildRel<T>> BST<T>::find_node_and_its_parent(T el) {
-    Node<T>* parent = nullptr;
-    Node<T>* child = root;
+    BSTNode<T>* parent = nullptr;
+    BSTNode<T>* child = root;
     bool is_left = false;
 
     while (child != nullptr) {
@@ -94,8 +94,8 @@ bool BST<T>::remove(T el) {
         return false;
     
     ParentChildRel<T> unwrapped_res = res.value();
-    Node<T>* parent = std::get<0>(unwrapped_res); //parent of node to delete
-    Node<T>* child = std::get<1>(unwrapped_res); //node to delete
+    BSTNode<T>* parent = std::get<0>(unwrapped_res); //parent of node to delete
+    BSTNode<T>* child = std::get<1>(unwrapped_res); //node to delete
     bool is_left = std::get<2>(unwrapped_res);
     
     // Case 1: deleting a leaf
@@ -119,14 +119,14 @@ bool BST<T>::remove(T el) {
     // Since it is the root, we have to update the root pointer (parent is nullptr)
     if (parent == nullptr) { //child is root
         if (child->right != nullptr) {
-            Node<T>* replacement = child->right;
-            Node<T>* parent_of_replacement = child;
+            BSTNode<T>* replacement = child->right;
+            BSTNode<T>* parent_of_replacement = child;
             while (replacement->left != nullptr) {
                 parent_of_replacement = replacement;
                 replacement = replacement->left;
             }
 
-            Node<T>* old_replacement_right = replacement->right;
+            BSTNode<T>* old_replacement_right = replacement->right;
             replacement->left = child->left;
             replacement->right = child->right;
             root = replacement;
@@ -139,14 +139,14 @@ bool BST<T>::remove(T el) {
         }
 
         // In this case, since child cannot be a leaf, it only has a ->left
-        Node<T>* replacement = child->left;
-        Node<T>* parent_of_replacement = child;
+        BSTNode<T>* replacement = child->left;
+        BSTNode<T>* parent_of_replacement = child;
         while (replacement->right != nullptr) {
             parent_of_replacement = replacement;
             replacement = replacement->right;
         }
         
-        Node<T>* old_replacement_left = replacement->left;
+        BSTNode<T>* old_replacement_left = replacement->left;
         replacement->left = child->left;
         root = replacement;
         // we already know replacement->right is null so it is fine
@@ -162,14 +162,14 @@ bool BST<T>::remove(T el) {
     // Since it is an interior node, it has to have a child
     // Case 3a: deleted node has a right child
     if (child->right != nullptr) {
-        Node<T>* replacement = child->right;
-        Node<T>* parent_of_replacement = child;
+        BSTNode<T>* replacement = child->right;
+        BSTNode<T>* parent_of_replacement = child;
         while (replacement->left != nullptr) {
             parent_of_replacement = replacement;
             replacement = replacement->left;
         }
 
-        Node<T>* old_replacement_right = replacement->right;
+        BSTNode<T>* old_replacement_right = replacement->right;
         replacement->left = child->left;
         if (child->right != replacement) {
             replacement->right = child->right;
@@ -186,15 +186,15 @@ bool BST<T>::remove(T el) {
 
     // Case 3b: deleted node only has a left child
     // implicitly, we know that child->left != nullptr since it is not a leaf and does not have a right node
-    Node<T>* replacement = child->left;
-    Node<T>* parent_of_replacement = child;
+    BSTNode<T>* replacement = child->left;
+    BSTNode<T>* parent_of_replacement = child;
 
     while (replacement->right != nullptr) {
         parent_of_replacement = replacement;
         replacement = replacement->right;
     }
 
-    Node<T>* old_replacement_left = replacement->left;
+    BSTNode<T>* old_replacement_left = replacement->left;
     if (child->left != replacement) {
         replacement->left = child->left;
     }
@@ -216,7 +216,7 @@ std::ostream& operator<<(std::ostream& os, const BST<T>& bst) {
 }
 
 template <typename T>
-void BST<T>::print_node(Node<T>* n, int level) const {
+void BST<T>::print_node(BSTNode<T>* n, int level) const {
     if (n == nullptr) return;
 
     int paren_type = level % 4;

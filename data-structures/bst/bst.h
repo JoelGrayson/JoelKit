@@ -5,18 +5,19 @@
 #include <optional>
 
 template <typename T>
-struct Node {
+struct BSTNode {
     T value;
-    Node<T>* left = nullptr;
-    Node<T>* right = nullptr;
+    BSTNode<T>* left = nullptr;
+    BSTNode<T>* right = nullptr;
 
-    Node(T value): value(value) {}
+    BSTNode(T value): value(value) {}
 };
 
+/** templates are helpful so you can make it a BST of any comparable object (int, float, double, Decimal, string) */
 template <typename T>
 class BST {
 public:
-    Node<T>* root = nullptr;
+    BSTNode<T>* root = nullptr;
 
     /** returns if an element was inserted */
     bool insert(T el);
@@ -28,14 +29,14 @@ public:
     template <typename U>
     friend std::ostream& operator<<(std::ostream& os, const BST<U>& bst);
 private:
-    void print_node(Node<T>* n, int level = 0) const;
-    bool contains_rec_helper(T el, Node<T>* current_node) const;
+    void print_node(BSTNode<T>* n, int level = 0) const;
+    bool contains_rec_helper(T el, BSTNode<T>* current_node) const;
     
     /**
      * This method is useful for remove
      * @returns optional<(parent, child, is_left)>; pointer to parent node, pointer to child node, boolean for if it is the left child (true is left, false is right). if the item is not found, returns None
      * */
-    std::optional<std::tuple<Node<T>*, Node<T>*, bool>> find_node_and_its_parent(T el);
+    std::optional<std::tuple<BSTNode<T>*, BSTNode<T>*, bool>> find_node_and_its_parent(T el);
 };
 
 #include "bst.tpp"
