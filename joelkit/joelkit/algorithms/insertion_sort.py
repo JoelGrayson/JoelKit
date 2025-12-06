@@ -20,15 +20,3 @@ def insertion_sort(arr): #inline
             curr_i -= 1
         arr[curr_i] = to_move
 
-
-def test():
-    arr = [8, 2, 4, 1, 3]
-    print(insertion_sorted(arr))
-    print([1, 2, 3, 4, 8])
-    print(arr)
-    insertion_sort(arr)
-    print(arr)
-
-if __name__ == '__main__':
-    test()
-
