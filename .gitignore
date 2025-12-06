@@ -9,4 +9,5 @@ data-structures/date/main
 data-structures/date/html
 data-structures/date/latex
 
-.vscode/settings.json
+# .vscode/settings.json
+**/dist
