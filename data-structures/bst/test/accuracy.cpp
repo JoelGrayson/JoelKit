@@ -1,13 +1,12 @@
 #include "../bst.h"
-// #include "../../linked-list/linked-list.h"
-#include <vector>
+#include "../../linked-list/linked-list.h"
 
-void add_balanced_items(std::vector<double>& items, int levels_left, double lower_bound, double upper_bound) {
+void add_balanced_items(LinkedList<double>& items, int levels_left, double lower_bound, double upper_bound) {
     if (levels_left <= 0)
         return;
     
     double middle = (lower_bound + upper_bound) / 2;
-    items.push_back(middle);
+    items.insert(middle);
     add_balanced_items(items, levels_left - 1, lower_bound, middle);
     add_balanced_items(items, levels_left - 1, middle, upper_bound);
 }
@@ -15,7 +14,7 @@ void add_balanced_items(std::vector<double>& items, int levels_left, double lowe
 int main() {
     BST<double> b;
 
-    std::vector<double> items;
+    LinkedList<double> items;
     add_balanced_items(items, 4, 0, 100);
     
     for (double item : items) {
@@ -29,10 +28,10 @@ int main() {
     for (double item : items) {
         BST<double> backup = b; //TODO: make copying work
 
-        auto before_list = b.to_list(); //TODO: make list work with LinkedList
-        
+        LinkedList<double> before_list = b.to_list(); //TODO: make list work with LinkedList
+        before_list.remove(item);
         b.remove(item);
-        b.to_list();
+        LinkedList<double> after_list = b.to_list();
 
         b = backup; //TODO: make moving work
     }
