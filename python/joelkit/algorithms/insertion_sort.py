@@ -10,7 +10,7 @@ def insertion_sorted(arr):
     return sorted_arr
 
 
-def insertion_sort(arr): #inline
+def insertion_sort(arr): #in place
     # first item already sorted
     for i in range(1, len(arr)):
         to_move = arr[i]

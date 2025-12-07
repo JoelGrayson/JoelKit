@@ -1,11 +1,11 @@
 import random
-from algorithms.sorting.is_sorted import is_sorted
+from .is_sorted import is_sorted
 
 def bogo_sort(arr):
     while True:
-        attempt = random.shuffle(arr)
-        if is_sorted(attempt):
-            return attempt
+        random.shuffle(arr)
+        if is_sorted(arr):
+            return arr
 
 
 def test():
