@@ -5,7 +5,7 @@
 #include "../../utils/print_vector.h"
 
 int main() {
-    std::vector<int> v { 8, 2, 4, 1, 3 };
+    std::vector<int> v { 3, 6, 5, 4, 1, 8, 7, 2 };
     print_vector(v);
     bubble_sort(v);
     print_vector(v);

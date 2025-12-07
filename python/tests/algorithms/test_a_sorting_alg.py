@@ -11,7 +11,7 @@ def test_a_sorting_alg(f, inplace = True):
                 f(l)
                 assert l == sorted
             else:
-                assert f(l) == sorted
+                assert f(unsorted) == sorted
         except:
             print('Unable to sort', unsorted)
             print('It should be', sorted)
