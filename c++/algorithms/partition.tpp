@@ -1,7 +1,7 @@
 #include "partition.h"
 
 template <typename T>
-int partition(std::vector<T> lst, int start_i, int end_i, int pivot_i) {
+int partition(std::vector<T>& lst, int start_i, int end_i, int pivot_i) {
     T p = lst[pivot_i];
 
     // 1. Put pivot at beginning

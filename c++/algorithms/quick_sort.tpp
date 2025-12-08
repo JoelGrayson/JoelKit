@@ -38,12 +38,29 @@ std::vector<T> quick_sorted(const std::vector<T>& lst) {
 
 
 int find_pivot_index(int start_i, int end_i) {
+    // Naive implementation
+    // return start_i;
+
+    
     return start_i;
 }
 
 
 template <typename T>
-void quick_sort(std::vector<T>& lst) {
+void quick_sort_helper(std::vector<T>& lst, int start_i, int end_i) {
+    int the_range = end_i - start_i;
+    if (the_range == 0 || the_range == 1)
+        return;
+    
+    int og_pivot_i = find_pivot_index(start_i, end_i);
+    int new_pivot_i = partition(lst, start_i, end_i, og_pivot_i);
 
+    quick_sort_helper(lst, start_i, new_pivot_i);
+    quick_sort_helper(lst, new_pivot_i + 1, end_i);
+}
+
+template <typename T>
+void quick_sort(std::vector<T>& lst) {
+    quick_sort_helper(lst, 0, lst.size());
 }
 
