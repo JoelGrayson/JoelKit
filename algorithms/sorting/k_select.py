@@ -1,10 +1,10 @@
-from quick_sort import quick_sort_not_in_place
+from python.joelkit.algorithms.quick_sort import quick_sorted
 
 
 def k_select(lst, k): #return the kth smallest value
     # Base case O(1)
     if len(lst) < 10:
-        return quick_sort_not_in_place(lst)[k] #todo: replace with better sorting
+        return quick_sorted(lst)[k] #todo: replace with better sorting
 
     # General case
     find_partition(lst)
@@ -22,13 +22,13 @@ def find_partition(lst):
     for value in lst:
         if len(current_group) == GROUP_SIZE:
             medians.append(
-                quick_sort_not_in_place(current_group)[GROUP_SIZE // 2]
+                quick_sorted(current_group)[GROUP_SIZE // 2]
             )
             current_group = []
         current_group.append(value)
     if len(current_group) > 0:
         medians.append(
-            quick_sort_not_in_place(current_group)[GROUP_SIZE // 2]
+            quick_sorted(current_group)[GROUP_SIZE // 2]
         )
         current_group = []
     
