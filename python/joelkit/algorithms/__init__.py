@@ -13,6 +13,7 @@ __all__ = [
     'bubble_sort',
     'bogo_sort',
     'merge_sort', 'merge_sorted', 'merge',
-    'quick_sort', 'quick_sorted'
+    'quick_sort', 'quick_sorted',
+    'partition',
 ]
 

@@ -1,20 +1,24 @@
-def partition(lst, pivot_index):
-    # Make the pivot at the start O(1)
-    lst[0], lst[pivot_index] = lst[pivot_index], lst[0]
+def partition(lst, start_i, end_i, pivot_i): # returns new position of the pivot
+    p = lst[pivot_i] #pivot value
 
-    p = lst[0] #pivot
+    # 1. Put the pivot at the beginning
+    lst[start_i], lst[pivot_i] = lst[pivot_i], lst[start_i]
 
-    lIndex = 1 #everything before lIndex belongs to L (<p)
-
-    # while rIndex < len(lst):
-    for rIndex in range(1, len(lst)): #everything after lIndex but before rIndex belongs to R (>p)
-        value = lst[rIndex] #current value to decide if in L or R
-        if value > p: #value is part of R
+    # 2. Incorporate every vertex v into the left or right
+    # Everything before l_i (left index) belongs to the left (<p)
+    # Everything after l_i but before r_i belongs to the right (>p)
+    # l_i points to the first element in the right, called r^
+    # r_i points to v, the current value under consideration
+    l_i = start_i + 1
+    for r_i in range(start_i + 1, end_i): 
+        v = lst[r_i] #decide if v should be in left or right
+        if v > p: #v should be in the right
             continue
-        if value <= p: #value is part of L
-            lst[lIndex], lst[rIndex] = lst[rIndex], lst[lIndex]
-            lIndex += 1
+        if v <= p: #v should be in the left
+            lst[l_i], lst[r_i] = lst[r_i], lst[l_i] #l_i points to r^
+            l_i += 1
 
-    # Move pivot to end of L
-    lst[0], lst[lIndex - 1] = lst[lIndex - 1], lst[0]
+    # 3. Move pivot to end of the left
+    lst[start_i], lst[l_i - 1] = lst[l_i - 1], lst[start_i]
+    return l_i - 1 #l_i - 1 is where the pivot is now
 
