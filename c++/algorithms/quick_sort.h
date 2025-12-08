@@ -2,6 +2,7 @@
 
 #include <vector>
 #include "partition.h"
+#include <cstdlib>
 
 template <typename T>
 std::vector<T> quick_sorted(const std::vector<T>& lst);

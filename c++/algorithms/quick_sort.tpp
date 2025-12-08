@@ -39,10 +39,12 @@ std::vector<T> quick_sorted(const std::vector<T>& lst) {
 
 int find_pivot_index(int start_i, int end_i) {
     // Naive implementation
-    // return start_i;
-
-    
     return start_i;
+
+    if (start_i == end_i)
+        return start_i;
+
+    return start_i + rand() % (end_i - start_i);
 }
 
 
