@@ -1,8 +1,15 @@
-from .insertion_sort import insertion_sort, insertion_sorted
-from .bogo_sort import bogo_sort
 from .is_sorted import is_sorted
+from .insertion_sort import insertion_sort, insertion_sorted
 from .bubble_sort import bubble_sort
-from .merge_sort import merge_sorted, merge
+from .bogo_sort import bogo_sort
+from .merge_sort import merge_sort
+from .merge_sorted import merge_sorted, merge
 
-__all__ = ['insertion_sort', 'insertion_sorted']
+__all__ = [
+    'is_sorted',
+    'insertion_sort', 'insertion_sorted',
+    'bubble_sort',
+    'bogo_sort',
+    'merge_sort', 'merge_sorted', 'merge',
+]
 

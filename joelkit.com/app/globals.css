@@ -1,26 +1,126 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+    --background: #ffffff;
+    --foreground: #171717;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --font-sans: var(--font-geist-sans);
+    --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+    :root {
+        --background: #0a0a0a;
+        --foreground: #ededed;
+    }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+    background: var(--background);
+    color: var(--foreground);
+    font-family: Arial, Helvetica, sans-serif;
 }
+
+
+button.styled {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    gap: 10px;
+    border: 1.1px solid #000;
+    border-radius: 3px;
+    padding: 5px 10px;
+    background-color: #e9e9e9;
+    position: relative;
+    top: 0;
+    user-select: none;
+
+    transition: top;
+    transition-duration: .1s;
+}
+
+button.styled:hover {
+    outline: 2.1px solid #111;
+    outline-offset: -2px;
+    filter: brightness(0.85) saturate(1.4);
+}
+
+button.styled:active {
+    border-radius: 2px;
+    top: 1.1px;
+    filter: brightness(0.8) saturate(1.4);
+}
+
+button.styled:disabled {
+    outline: none;
+}
+
+.btn-green { background-color: #90ee90 !important; }
+.btn-red   { background-color: #ff8f8f !important; }
+.btn-yellow{ background-color: #ffd472 !important; }
+.btn-blue  { background-color: #aed8fc !important; }
+
+@media (prefers-color-scheme: dark) {
+    button.styled {
+        background-color: #222;
+    }
+    button.styled:hover {
+        background-color: #333;
+    }
+}
+
+
+.j_max-w {
+    max-width: 800px;
+}
+
+.j_container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+input.styled, textarea.styled {
+  border: 1px solid gray;
+  border-radius: 0.4rem;
+  padding: 0.2rem 0.8rem;
+}
+
+
+a.styled:not(.button) {
+  color: #0000e1;
+  text-decoration: underline;
+}
+a.styled:not(.button):hover {
+  color: #3a3aff;
+}
+a.styled:not(.button):active {
+  color: #6a6aff;
+}
+
+h1 { font-size: 3.0rem; margin-top: 10px; font-weight: 800; margin-bottom: 10px; }
+h2 { font-size: 2.1rem; margin-top: 8px;  font-weight: 800; margin-bottom: 0px; }
+h3 { font-size: 1.6rem; margin-top: 7px;  font-weight: 600; margin-bottom: 0px; }
+h4 { font-size: 1.3rem; margin-top: 6px;  font-weight: 600; margin-bottom: 0px; }
+h5 { font-size: 1.2rem; margin-top: 5px;  font-weight: 600; margin-bottom: 0px; }
+h6 { font-size: 1.1rem; margin-top: 4px;  font-weight: 600; margin-bottom: 0px; }
+
+/* ### Mobile-Friendly Headers */
+@media only screen and (max-width: 640px) {
+    h1 { font-size: 2.5rem; margin-top: 10px; }
+    h2 { font-size: 2.0rem; margin-top: 8px; }
+    h3 { font-size: 1.6rem; margin-top: 7px; }
+    h4 { font-size: 1.3rem; margin-top: 6px; }
+    h5 { font-size: 1.2rem; margin-top: 5px; }
+    h6 { font-size: 1.1rem; margin-top: 4px; }
+}
+
+
+ul:not(.styled) {
+  list-style-type: disc;
+  list-style-position: inside;
+}
+

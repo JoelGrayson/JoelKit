@@ -1,4 +1,6 @@
 export default function Home() {
-    return <div>JoelKit</div>;
+    return <div>
+        <h1>JoelKit</h1>
+    </div>;
 }
 
