@@ -5,6 +5,7 @@ from .bogo_sort import bogo_sort
 from .merge_sort import merge_sort
 from .merge_sorted import merge_sorted, merge
 from .quick_sort import quick_sort, quick_sorted
+from .partition import partition
 
 __all__ = [
     'is_sorted',

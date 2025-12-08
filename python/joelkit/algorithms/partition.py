@@ -18,13 +18,3 @@ def partition(lst, pivot_index):
     # Move pivot to end of L
     lst[0], lst[lIndex - 1] = lst[lIndex - 1], lst[0]
 
-
-def test():
-    lst = [5, 6, 4, 2, 8, 9]
-    print(lst)
-    partition(lst, 0)
-    print(lst)
-
-
-test()
-

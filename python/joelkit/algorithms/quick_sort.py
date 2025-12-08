@@ -25,8 +25,13 @@ def quick_sorted(lst): #-> sorted list
 
 
 def quick_sort(lst): #sorts the list in place
+    quick_sort_helper(lst, 0, len(lst))
+
+
+def quick_sort_helper(lst, start_i, end_i):
     # Base case: if list is empty or size 1, nothing to be done
-    if len(lst) <= 1:
+    range = end_i - start_i
+    if range == 0 or range == 1:
         return
     
     # Recursive case: find a partition (efficiently), then partition the list so the items to the left of the partition are less than the partition and the items to the right of the partition are greater than the partition
