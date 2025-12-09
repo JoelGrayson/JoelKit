@@ -11,4 +11,5 @@ print(l)
 test_a_sorting_alg(quick_sort, inplace=True)
 test_a_sorting_alg(quick_sorted, inplace=False)
 
-plot_time_complexity(quick_sort)
+plot_time_complexity(quick_sort, 1_000_000, 100)
+
