@@ -1,9 +1,9 @@
 const videos = {
-    insertionSort: 'https://youtu.be/rco19UYVNck',
-    bubbleSort: 'https://youtu.be/yIMM_4_DMc0',
-    mergeSort: 'https://youtu.be/hsIVSABUyDw',
-    quickSort: 'https://youtu.be/DarKfGrQxVY',
-    stack: 'https://youtu.be/RISmPnxXf3w'
+    insertionSort: 'rco19UYVNck',
+    bubbleSort: 'yIMM_4_DMc0',
+    mergeSort: 'hsIVSABUyDw',
+    quickSort: 'DarKfGrQxVY',
+    stack: 'RISmPnxXf3w'
 };
 
 export default videos;
