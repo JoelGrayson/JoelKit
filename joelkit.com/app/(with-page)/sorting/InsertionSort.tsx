@@ -1,8 +1,8 @@
 'use client';
 
 import Yt from "@/components/Yt";
-import videos from "../videos";
-import Toggle from "./Toggle";
+import videos from "../../videos";
+import Toggle from "./../Toggle";
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { Switch } from "@/components/ui/switch";

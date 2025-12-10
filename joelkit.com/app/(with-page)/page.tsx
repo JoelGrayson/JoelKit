@@ -1,6 +1,7 @@
-import InsertionSort from "./InsertionSort";
-import QuickSort from "./QuickSort";
+import InsertionSort from "./sorting/InsertionSort";
+import QuickSort from "./sorting/QuickSort";
 import CodeBlock from "./CodeBlock";
+import MergeSort from "./sorting/MergeSort";
 
 export default function Home() {
     return <div className="max-w-[800px] mx-auto mt-8">
@@ -13,6 +14,7 @@ export default function Home() {
         <ul className="styled">
             <InsertionSort />
             <QuickSort />
+            <MergeSort />
         </ul>
         
     </div>;
