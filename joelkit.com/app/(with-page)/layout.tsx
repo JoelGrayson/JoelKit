@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from "next/link";
 
-export default function PageContainer({ children }: { children: React.ReactElement }) {
+export default function PageContainer({ children }: { children: React.ReactNode }) {
     return <>
         <header className="
             flex justify-center h-16

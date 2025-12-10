@@ -24,19 +24,17 @@ export default function InsertionSort() {
                 <label htmlFor="in-place-toggle">In Place</label>
             </div>
 
-            <div className="sm:grid sm:grid-cols-2 gap-4">
-                <div>
-                    <h4>Python</h4>
-                    <SyntaxHighlighter language="python" style={oneDark}>
-                        {inPlace ? insertionSortPythonInPlace : insertionSortPython}
-                    </SyntaxHighlighter>
-                </div>
-                <div>
-                    <h4>C++</h4>
-                    <SyntaxHighlighter language="cpp" style={oneDark}>
-                        {inPlace ? insertionSortCppInPlace : insertionSortCpp}
-                    </SyntaxHighlighter>
-                </div>
+            <div>
+                <h4>Python</h4>
+                <SyntaxHighlighter language="python" style={oneDark}>
+                    {inPlace ? insertionSortPythonInPlace : insertionSortPython}
+                </SyntaxHighlighter>
+            </div>
+            <div>
+                <h4>C++</h4>
+                <SyntaxHighlighter language="cpp" style={oneDark}>
+                    {inPlace ? insertionSortCppInPlace : insertionSortCpp}
+                </SyntaxHighlighter>
             </div>
             
             <h3>Runtime</h3>

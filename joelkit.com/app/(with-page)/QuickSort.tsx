@@ -24,19 +24,17 @@ export default function QuickSort() {
                 <label htmlFor="in-place-toggle">In Place</label>
             </div>
 
-            <div className="sm:grid sm:grid-cols-2 gap-4">
-                <div>
-                    <h4>Python</h4>
-                    <SyntaxHighlighter language="python" style={oneDark}>
-                        {inPlace ? quickSortPythonInPlace : quickSortPython}
-                    </SyntaxHighlighter>
-                </div>
-                <div>
-                    <h4>C++</h4>
-                    <SyntaxHighlighter language="cpp" style={oneDark}>
-                        {inPlace ? quickSortCppInPlace : quickSortCpp}
-                    </SyntaxHighlighter>
-                </div>
+            <div>
+                <h4>Python</h4>
+                <SyntaxHighlighter language="python" style={oneDark}>
+                    {inPlace ? quickSortPythonInPlace : quickSortPython}
+                </SyntaxHighlighter>
+            </div>
+            <div>
+                <h4>C++</h4>
+                <SyntaxHighlighter language="cpp" style={oneDark}>
+                    {inPlace ? quickSortCppInPlace : quickSortCpp}
+                </SyntaxHighlighter>
             </div>
 
             <h3>Runtime</h3>
