@@ -38,8 +38,7 @@ export default function MergeSort() {
             </div>
             
             <h3>Runtime</h3>
-            <p>Best case: O(n)</p>
-            <p>Worst case: O(n<sup>2</sup>)</p>
+            <p>O(nlogn)</p>
         </Toggle>
     </>;
 }

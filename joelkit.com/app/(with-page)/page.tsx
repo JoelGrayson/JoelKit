@@ -2,6 +2,7 @@ import InsertionSort from "./sorting/InsertionSort";
 import QuickSort from "./sorting/QuickSort";
 import CodeBlock from "./CodeBlock";
 import MergeSort from "./sorting/MergeSort";
+import BubbleSort from "./sorting/BubbleSort";
 
 export default function Home() {
     return <div className="max-w-[800px] mx-auto mt-8">
@@ -15,6 +16,7 @@ export default function Home() {
             <InsertionSort />
             <QuickSort />
             <MergeSort />
+            <BubbleSort />
         </ul>
         
     </div>;
