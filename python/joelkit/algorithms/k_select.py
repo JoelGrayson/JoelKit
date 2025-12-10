@@ -14,12 +14,12 @@ def find_pivot(lst):
 
 
 def k_select(lst, k):
+    if k > len(lst) or len(lst) == 0: #not possible (check)
+        return None
     if len(lst) < 10:
         return sorted(lst)[k]
     
     pivot_index, pivot_value = find_pivot(lst)
-    if k == pivot_index:
-        return pivot_value
     
     # Partition
     left = []
@@ -33,6 +33,8 @@ def k_select(lst, k):
             right.append(item)
     
     # Recursion
+    if k == len(left): #is the pivot
+        return pivot_value
     if k < len(left):
         return k_select(left, k)
     else:
