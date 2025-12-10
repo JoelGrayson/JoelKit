@@ -1,5 +1,5 @@
 #include "../bst.h"
-#include "../../linked-list/linked-list.h"
+#include "../../linked_list/linked_list.h"
 
 void add_balanced_items(LinkedList<double>& items, int levels_left, double lower_bound, double upper_bound) {
     if (levels_left <= 0)
