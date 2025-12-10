@@ -3,6 +3,7 @@ import QuickSort from "./sorting/QuickSort";
 import CodeBlock from "./CodeBlock";
 import MergeSort from "./sorting/MergeSort";
 import BubbleSort from "./sorting/BubbleSort";
+import KSelect from "./KSelect";
 
 export default function Home() {
     return <div className="max-w-[800px] mx-auto mt-8">
@@ -18,6 +19,9 @@ export default function Home() {
             <MergeSort />
             <BubbleSort />
         </ul>
+        
+        <h3>Other</h3>
+        <KSelect />
         
     </div>;
 }
