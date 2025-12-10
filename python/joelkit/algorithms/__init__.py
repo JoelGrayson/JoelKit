@@ -6,6 +6,7 @@ from .merge_sort import merge_sort
 from .merge_sorted import merge_sorted, merge
 from .quick_sort import quick_sort, quick_sorted
 from .partition import partition
+from .k_select import k_select
 
 __all__ = [
     'is_sorted',

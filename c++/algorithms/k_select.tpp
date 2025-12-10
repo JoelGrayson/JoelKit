@@ -16,7 +16,7 @@ IndexAndValue<T> find_pivot(std::vector<T> list) {
             );
         }
         insertion_sort(five, [](IndexAndValue<T> item) { return item.second; }); //insertion sort is nice on small lists
-        IndexAndValue<T> median = five[five.size() / 2];
+        IndexAndValue<T> median = five[five.size() / 2]; //do this instead of [2] in the case that |five|<5
         medians.push_back(median);
     }
     insertion_sort(medians, [](IndexAndValue<T> item) { return item.second; });
@@ -26,10 +26,9 @@ IndexAndValue<T> find_pivot(std::vector<T> list) {
 
 template <typename T>
 T k_select(std::vector<T> list, int k) {
-    if (list.size() < 10) { //base case
-        merge_sort(list);
-        return list[k];
-    }
+    if (list.size() < 10) //base case
+        return merge_sorted(list)[k];
+    
     
     IndexAndValue<T> pivot = find_pivot(list);
 
@@ -49,6 +48,7 @@ T k_select(std::vector<T> list, int k) {
             right.push_back(item);
     }
     
+    // Recursive step
     if (k < left.size()) {
         return k_select(left, k);
     } else {
