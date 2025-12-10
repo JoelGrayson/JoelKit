@@ -94,7 +94,7 @@ def quick_sort_helper(lst, start_i, end_i): #quick sorts the lists inclusive of 
     
     # Recursive case: find a partition (efficiently), then partition the list so the items to the left of the partition are less than the partition and the items to the right of the partition are greater than the partition
     og_pivot_i = find_pivot_index(start_i, end_i)
-    new_pivot_i = partition(lst, start_i, end_i, og_pivot_i)
+    new_pivot_i = partition(lst, start_i, end_i, og_pivot_i) //see partition algorithm in the other bullet point (below)
 
     quick_sort_helper(lst, start_i, new_pivot_i) #quick sort the left side
     quick_sort_helper(lst, new_pivot_i + 1, end_i) #quick sort the right side
@@ -159,7 +159,7 @@ void quick_sort_helper(std::vector<T>& lst, int start_i, int end_i) {
         return;
     
     int og_pivot_i = find_pivot_index(start_i, end_i);
-    int new_pivot_i = partition(lst, start_i, end_i, og_pivot_i);
+    int new_pivot_i = partition(lst, start_i, end_i, og_pivot_i); #see partition algorithm in the other bullet point (below)
 
     quick_sort_helper(lst, start_i, new_pivot_i);
     quick_sort_helper(lst, new_pivot_i + 1, end_i);
