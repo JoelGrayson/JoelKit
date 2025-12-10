@@ -4,7 +4,7 @@ export default function Toggle({ title, children }: { title: string; children: a
             {title}
         </summary>
 
-        <div className="pl-8 pt-3">
+        <div className="pl-8 py-3">
             {children}
         </div>
     </details>;
