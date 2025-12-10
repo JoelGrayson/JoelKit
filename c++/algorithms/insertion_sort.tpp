@@ -14,8 +14,8 @@ void insertion_sort(std::vector<T>& v) {
 }
 
 // Uses key. This way, it can be objects being sorted by their key.
-template <typename T, typename U>
-void insertion_sort(std::vector<T>& v, std::function<U(T)> key) {
+template <typename T, typename KeyFunc>
+void insertion_sort(std::vector<T>& v, KeyFunc key) {
     for (int i = 1; i < v.size(); i++) {
         T el = v[i]; //element to insert
         int curr_i = i;

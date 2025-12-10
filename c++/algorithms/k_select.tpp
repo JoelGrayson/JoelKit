@@ -4,7 +4,7 @@
 template <typename T>
 using IndexAndValue = std::pair<int, T>;
 
-/** Finds median of medians */
+/** Finds median of medians. @returns its index in the passed-in list as well as its value */
 template <typename T>
 IndexAndValue<T> find_pivot(std::vector<T> list) {
     std::vector<IndexAndValue<T>> medians;
@@ -16,7 +16,7 @@ IndexAndValue<T> find_pivot(std::vector<T> list) {
             );
         }
         insertion_sort(five, [](IndexAndValue<T> item) { return item.second; }); //insertion sort is nice on small lists
-        IndexAndValue<T> median = five[2]; //median because third element is the middle element of the list of five
+        IndexAndValue<T> median = five[five.size() / 2];
         medians.push_back(median);
     }
     insertion_sort(medians, [](IndexAndValue<T> item) { return item.second; });
@@ -49,7 +49,7 @@ T k_select(std::vector<T> list, int k) {
             right.push_back(item);
     }
     
-    if (pivot.first < left.size()) {
+    if (k < left.size()) {
         return k_select(left, k);
     } else {
         return k_select(right, k - left.size() - 1); //takes out the left and the pivot
