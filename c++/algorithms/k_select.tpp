@@ -2,22 +2,25 @@
 #include <iostream>
 
 template <typename T>
-T find_pivot(std::vector<T> list) {
-    // Finds median of medians
-    std::vector<T> medians;
+using IndexAndValue = std::pair<int, T>;
+
+/** Finds median of medians */
+template <typename T>
+IndexAndValue<T> find_pivot(std::vector<T> list) {
+    std::vector<IndexAndValue<T>> medians;
     for (int i = 0; i < list.size(); i += 5) {
-        std::vector<T> five;
+        std::vector<IndexAndValue<T>> five;
         for (int j = i; j < list.size() && j < i + 5; j++) {
-            // std::cout << list[j] << " ";
-            five.push_back(list[j]);
+            five.push_back(
+                std::make_pair(j, list[j])
+            );
         }
-        insertion_sort(five); //insertion sort is nice on small lists
-        T median = five[2]; //median because third element is the middle element of the list of five
+        insertion_sort(five, [](IndexAndValue<T> item) { return item.second; }); //insertion sort is nice on small lists
+        IndexAndValue<T> median = five[2]; //median because third element is the middle element of the list of five
         medians.push_back(median);
     }
-    insertion_sort(medians);
-    merge_sort(medians);
-    T median_of_medians = medians[medians.size() / 2];
+    insertion_sort(medians, [](IndexAndValue<T> item) { return item.second; });
+    IndexAndValue<T> median_of_medians = medians[medians.size() / 2];
     return median_of_medians;
 }
 
@@ -28,21 +31,28 @@ T k_select(std::vector<T> list, int k) {
         return list[k];
     }
     
-    T pivot = find_pivot(list);
-    // TODO: use partition
-    // std::vector<T> left;
-    // std::vector<T> right;
-    // for (T item : list) {
-    //     if (item <= pivot)
-    //         left.push_back(item);
-    //     else
-    //         right.push_back(item);
-    // }
+    IndexAndValue<T> pivot = find_pivot(list);
+
+    if (k == pivot.first)
+        return pivot.second;
     
-    if (pivot < left.size()) {
+    // Partition
+    std::vector<T> left;
+    std::vector<T> right;
+    for (int i = 0; i < list.size(); i++) {
+        T item = list[i];
+        if (i == pivot.first) //skip the pivot. It is neither in left nor right
+            continue;
+        if (item <= pivot.second)
+            left.push_back(item);
+        else
+            right.push_back(item);
+    }
+    
+    if (pivot.first < left.size()) {
         return k_select(left, k);
     } else {
-        return k_select(right, k - left.size());
+        return k_select(right, k - left.size() - 1); //takes out the left and the pivot
     }
 }
 
