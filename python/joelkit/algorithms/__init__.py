@@ -16,5 +16,6 @@ __all__ = [
     'merge_sort', 'merge_sorted', 'merge',
     'quick_sort', 'quick_sorted',
     'partition',
+    'k_select'
 ]
 

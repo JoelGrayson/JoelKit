@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "joelkit"
-version = "0.1.0"
+version = "0.1.1"
 description = "Data structures, algorithms, etc."
 authors = [
     { name="Joel Grayson", email="joel@joelgrayson.com" }

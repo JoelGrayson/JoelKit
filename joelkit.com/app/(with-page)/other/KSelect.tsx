@@ -27,7 +27,9 @@ export default function KSelect() {
     </>;
 }
 
-const kSelectPy = `def find_pivot(lst):
+const kSelectPy = `# from joelkit.algorithms import k_select
+
+def find_pivot(lst):
     medians = []
     for i in range(0, len(lst), 5):
         five = []

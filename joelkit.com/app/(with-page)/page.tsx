@@ -5,6 +5,10 @@ import MergeSort from "./sorting/MergeSort";
 import BubbleSort from "./sorting/BubbleSort";
 import KSelect from "./other/KSelect";
 import Partition from "./other/Partition";
+import Stack from "./data-structures/Stack";
+import Queue from "./data-structures/Queue";
+import LinkedList from "./data-structures/LinkedList";
+import BST from "./data-structures/BST";
 
 export default function Home() {
     return <div className="max-w-[800px] mx-auto mt-8">
@@ -24,6 +28,14 @@ export default function Home() {
         <h3>Other</h3>
         <KSelect />
         <Partition />
+        
+        <h2>Data Structures</h2>
+        <ul>
+            <Stack />
+            <Queue />
+            <LinkedList />
+            <BST />
+        </ul>
         
     </div>;
 }

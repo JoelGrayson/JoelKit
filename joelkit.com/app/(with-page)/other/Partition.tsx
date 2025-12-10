@@ -27,7 +27,9 @@ export default function Partition() {
     </>;
 }
 
-const partitionPy = `def partition(lst, start_i, end_i, pivot_i): # returns new position of the pivot
+const partitionPy = `# from joelkit.algorithms import partition
+
+def partition(lst, start_i, end_i, pivot_i): # returns new position of the pivot
     p = lst[pivot_i] #pivot value
 
     # 1. Put the pivot at the beginning

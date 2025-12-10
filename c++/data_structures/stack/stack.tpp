@@ -1,7 +1,5 @@
 #include "stack.h"
 
-#include <iostream>
-
 template <typename T>
 Stack<T>::Stack() {
     elems_ = new T[capacity_];
