@@ -5,8 +5,8 @@ template <typename T>
 using IndexAndValue = std::pair<int, T>;
 
 /** Finds median of medians. @returns its index in the passed-in list as well as its value */
-template <typename T>
-IndexAndValue<T> find_pivot(std::vector<T> list) {
+template <typename T, typename KeyFunc>
+IndexAndValue<T> find_pivot(std::vector<T> list, KeyFunc key) {
     std::vector<IndexAndValue<T>> medians;
     for (int i = 0; i < list.size(); i += 5) {
         std::vector<IndexAndValue<T>> five;
@@ -15,26 +15,26 @@ IndexAndValue<T> find_pivot(std::vector<T> list) {
                 std::make_pair(j, list[j])
             );
         }
-        insertion_sort(five, [](IndexAndValue<T> item) { return item.second; }); //insertion sort is nice on small lists
+        insertion_sort(five, [&key](IndexAndValue<T> item) { return key(item.second); }); //insertion sort is nice on small lists
         IndexAndValue<T> median = five[five.size() / 2]; //do this instead of [2] in the case that |five|<5
         medians.push_back(median);
     }
     insertion_sort(medians, [](IndexAndValue<T> item) { return item.second; });
     IndexAndValue<T> median_of_medians = medians[medians.size() / 2];
+    // IndexAndValue<T> median_of_medians = k_select(medians, medians.size() / 2, [&key](IndexAndValue<T> el) {
+    //     return key(el.second);
+    // });
     return median_of_medians;
 }
 
-template <typename T>
-T k_select(std::vector<T> list, int k) {
-    if (list.size() < 10) //base case
-        return merge_sorted(list)[k];
+template <typename T, typename KeyFunc>
+T k_select(std::vector<T> list, int k, KeyFunc key) {
+    if (list.size() < 50) //base case
+        return insertion_sorted(list, key)[k];
     
     
-    IndexAndValue<T> pivot = find_pivot(list);
+    IndexAndValue<T> pivot = find_pivot(list, key);
 
-    if (k == pivot.first)
-        return pivot.second;
-    
     // Partition
     std::vector<T> left;
     std::vector<T> right;
@@ -42,17 +42,23 @@ T k_select(std::vector<T> list, int k) {
         T item = list[i];
         if (i == pivot.first) //skip the pivot. It is neither in left nor right
             continue;
-        if (item <= pivot.second)
+        if (key(item) <= key(pivot.second))
             left.push_back(item);
         else
             right.push_back(item);
     }
     
     // Recursive step
-    if (k < left.size()) {
-        return k_select(left, k);
-    } else {
-        return k_select(right, k - left.size() - 1); //takes out the left and the pivot
-    }
+    if (k == left.size()) //is pivot
+        return pivot.second;
+    else if (k < left.size())
+        return k_select(left, k, key);
+    else
+        return k_select(right, k - left.size() - 1, key); //takes out the left and the pivot
+}
+
+template <typename T>
+T k_select(std::vector<T> list, int k) {
+    return k_select(list, k, [](T el) { return el; }); //use the self selector
 }
 

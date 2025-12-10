@@ -9,7 +9,8 @@ def find_pivot(lst):
         five.sort(key=lambda x : x[1])
         median = five[len(five) // 2]
         medians.append(median)
-    return medians[len(medians) // 2]
+    return sorted(medians, key=lambda x : x[1])[len(medians) // 2]
+    # return k_select(medians, len(medians) // 2)
 
 
 def k_select(lst, k):

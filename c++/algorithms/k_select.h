@@ -5,6 +5,9 @@
 #include "merge_sort.h"
 #include "partition.h"
 
+template <typename T, typename KeyFunc>
+T k_select(std::vector<T> list, int k, KeyFunc key);
+
 template <typename T>
 T k_select(std::vector<T> list, int k);
 

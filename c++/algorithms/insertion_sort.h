@@ -11,6 +11,12 @@ template <typename T, typename KeyFunc>
 void insertion_sort(std::vector<T>& v, KeyFunc key);
 
 template <typename T>
+void insertion_sort(std::vector<T>& v);
+
+template <typename T, typename KeyFunc>
+std::vector<T> insertion_sorted(const std::vector<T>& v, KeyFunc key);
+
+template <typename T>
 std::vector<T> insertion_sorted(const std::vector<T>& v);
 
 
